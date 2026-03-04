@@ -13,9 +13,21 @@ import java.util.Scanner;
  *  - Write methods to analyze the dataset (min, max, average, filters, etc.)
  *  - Print insights and answer your guiding question
  *  - Add Javadoc comments for any methods you create
+ *
+ * Main application for analyzing drug overdose deaths across U.S. states.
+ * Reads CDC health data from CSV file, creates Data objects, and performs
+ * statistical analysis to answer the guiding question about overdose mortality.
+ *
+ * @author Kolion Borden
+ * @version 1.0
  */
 public class App {
 
+    /**
+     * Main method that runs the drug overdose death analysis program.
+     * Reads CSV data, creates Data objects, performs analysis, and provides user interaction.
+     * @param args command line arguments (not used)
+     */
     public static void main(String[] args) {
 
         // TODO: Update this with your CSV file path

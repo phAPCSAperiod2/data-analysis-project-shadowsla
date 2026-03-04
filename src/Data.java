@@ -8,6 +8,12 @@
  *  - Add getter methods for the attributes you need in your analysis
  *  - Override toString() to display the object's data
  *  - Add Javadoc comments for the class and all methods
+ *
+ * Represents health statistics for a single U.S. state from the CDC dataset.
+ * Contains state name, population, and drug overdose death totals for analysis.
+ *
+ * @author Kolion Borden
+ * @version 1.0
  */
 // 
 public class Data {
@@ -24,6 +30,12 @@ public class Data {
 
     // TODO: Create a constructor that takes all attributes as parameters
     //
+    /**
+     * Constructor for Data object.
+     * @param state the name of the state
+     * @param population the population of the state
+     * @param deaths the number of drug overdose deaths
+     */
     public Data(String state, int population, int deaths) {
         this.state = state;
         this.population = population;
@@ -31,16 +43,34 @@ public class Data {
     }
 
     // TODO: Add getters for attributes you need
+    /**
+     * Gets the state name.
+     * @return the state name
+     */
     public String getState() {
         return state;
     }
+
+    /**
+     * Gets the state population.
+     * @return the population
+     */
     public int getPopulation() {
         return population;
     }
+
+    /**
+     * Gets the number of drug overdose deaths.
+     * @return the number of deaths
+     */
     public int getDeaths() {
         return deaths;
     }
     // TODO: Add other data analysis methods
+    /**
+     * Calculates the drug overdose death rate per 100,000 people.
+     * @return the death rate per 100,000 population
+     */
     public double getDeathRate() {
         if (population == 0) {
             return 0; // Avoid division by zero
@@ -49,6 +79,10 @@ public class Data {
     }
 
     // TODO: Override toString() to return a readable representation of your object
+    /**
+     * Returns a string representation of the Data object.
+     * @return formatted string with state, population, and deaths
+     */
     @Override
     public String toString() {
         return "Data{" +
