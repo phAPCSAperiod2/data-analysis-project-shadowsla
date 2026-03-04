@@ -16,7 +16,7 @@ public class Data {
     // Example:
     // private String name; State name
     // private int population; State population
-    // private int deaths; Death total
+    // private int deaths; Death to drug overdose total
     
     private String state;
     private int population;

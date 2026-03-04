@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.Scanner;
 
 /**
  * Main application for the Data Analysis Mini‑Project.
@@ -18,7 +19,7 @@ public class App {
     public static void main(String[] args) {
 
         // TODO: Update this with your CSV file path
-        File file = new File("data/your_dataset.csv");
+        File file = new File("src/StateData2020-CDC-Census.csv");
 
         // TODO: Create an array of Data objects to store data
             Data[] dataList = new Data[100]; // Example size, adjust as needed
@@ -41,7 +42,7 @@ public class App {
                     String[] columns = line.split(",");
                     String state = columns[0];
                     int population = Integer.parseInt(columns[1]);
-                    int deaths = Integer.parseInt(columns[2]);
+                    int deaths = Integer.parseInt(columns[6]); // Drug Overdose Deaths Total
                     dataList[index] = new Data(state, population, deaths);
                     index++;
                 }
@@ -80,13 +81,43 @@ public class App {
         // Based on user input, call different analysis methods
         
          if (choice.equalsIgnoreCase("max")) {
-             double maxValue = findMaxValue(dataList);
-             System.out.println("Max value: " + maxValue);
-         } else if (choice.equalsIgnoreCase("average")) {
-             double average = computeAverageValue(dataList);
-             System.out.println("Average value: " + average);
-         } else {     System.out.println("Invalid choice."); }
+                System.out.println("Max value: " + findMaxValue(dataList));
+            } else if (choice.equalsIgnoreCase("average")) {
+                System.out.println("Average value: " + computeAverageValue(dataList));
+            } else {
+                System.out.println("Invalid choice. Please enter 'max' or 'average'.");
+            }
     }
 
+    /**
+     * Finds the maximum death value in the dataset.
+     * @param dataList the array of Data objects
+     * @return the maximum death value
+     */
+    public static double findMaxValue(Data[] dataList) {
+        double max = 0;
+        for (Data data : dataList) {
+            if (data != null && data.getDeaths() > max) {
+                max = data.getDeaths();
+            }
+        }
+        return max;
+    }
 
+    /**
+     * Computes the average death value in the dataset.
+     * @param dataList the array of Data objects
+     * @return the average death value
+     */
+    public static double computeAverageValue(Data[] dataList) {
+        double sum = 0;
+        int count = 0;
+        for (Data data : dataList) {
+            if (data != null) {
+                sum += data.getDeaths();
+                count++;
+            }
+        }
+        return count > 0 ? sum / count : 0;
+    }
 }
